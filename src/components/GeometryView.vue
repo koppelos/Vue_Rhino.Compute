@@ -17,7 +17,8 @@ import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 import { runCompute } from "@/scripts/compute.js"
 import { loadRhino } from "@/scripts/compute.js";
 
-import context from "../assets/moonless_golf_1k.hdr"
+//import context from "../assets/moonless_golf_1k.hdr"
+import context from "../assets/lilienstein_4k.hdr"
 
 const ghPath = '../assets/disco.gh'
 
@@ -172,8 +173,17 @@ function animate() {
   requestAnimationFrame(animate);
   controls.update();
 
+  const speedFactor = 0.001; // lower values for slower rotation, higher values for faster rotation
+  const speedElementRotation = 0.00001;
+
+  // Rotate the element
+  scene.rotation.y += speedElementRotation; // Add this line to rotate the scene
+
+
+
+
   //Rotate Lights
-  const time = Date.now() * 0.001;
+  const time = Date.now() * speedFactor;
   spotLightRed.position.x = Math.sin( time * 0.7 ) * 100;
   spotLightRed.position.y = Math.cos( time * 0.5 ) * 100;
   spotLightRed.position.z = Math.cos( time * 0.3 ) * 100;
@@ -224,20 +234,25 @@ onUnmounted(async() => {
 </script>
 
 <style scoped>
+#viewport {
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
 
-  #viewport {
-    height: 100%;
-    width: 100%;
-    min-width: 200px;
-    position:inherit;
-  }
+#threejs-container {
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  position: relative;
+}
 
-  #threejs-container {
-    height: 100%;
-    width: 100%;
-    min-width: 200px;
-    position:inherit;
-  }
-  #gui { position: absolute; top: 2px; left: 2px }
-
+#gui {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
 </style>

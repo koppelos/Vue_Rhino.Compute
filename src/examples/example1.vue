@@ -22,7 +22,7 @@ import Toggle from "../components/Toggle.vue"
 //define path to grasshopper script
 import def from "../assets/disco.gh"
 const path = def
-
+//comment
 //define input names and values
 const radiusSliderName = ref("radius")
 const radiusSliderValue = ref(50)

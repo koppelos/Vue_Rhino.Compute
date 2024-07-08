@@ -26,10 +26,10 @@ const path = def
 
 // Define input names and values
 const radiusSliderName = ref("radius")
-const radiusSliderValue = ref(40)
+const radiusSliderValue = ref(20)
 
 const divisionsVertSliderName = ref("divisionsVert")
-const divisionsVertValue = ref(30)
+const divisionsVertValue = ref(20)
 
 
 const horzDivisionWidthSliderName = ref("horzDivisionWidth")

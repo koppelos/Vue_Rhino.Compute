@@ -2,8 +2,8 @@
   <div id="top-bar">
     <div id="title-container">
       <div style="display: flex; align-items: center">
-        <img class="logo-image" alt="Iaac logo" src="../assets/graphics/AECtech_24_Barcelona-Banner_sm.png" />
-        <h2>Grasshopper on the Web</h2>
+        <img class="logo-image" alt="Iaac logo" src="../assets/graphics/andshufl.jpg" />
+        <h2>Grasshopper on Web by Remi</h2>
         <div id="navigation-tabs">
           <div :class="{ 'selected-tab': selectedExample === 0, 'navigation-tab': selectedExample !== 0 }" @click="toggleExample(0)">Example 1</div>
 <!--          /*<div :class="{ 'selected-tab': selectedExample === 1, 'navigation-tab': selectedExample !== 1 }" @click="toggleExample(1)">Example 2</div> -->

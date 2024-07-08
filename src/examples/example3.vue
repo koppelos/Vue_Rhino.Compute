@@ -1,63 +1,67 @@
-
-  <template>
-    <div id="container">
-      <div id="topbar">
-        <IntegerInput :title="radiusSliderName" :val="radiusSliderValue" @update="updateValue"></IntegerInput>
-        <IntegerInput :title="divisionsVertSliderName" :val="divisionsVertValue" @update="updateValue"></IntegerInput>
-        <Slider :title="horzDivisionWidthSliderName" :min="1" max="10" :step="1" :val="horzDivisionWidthValue" @update="updateValue"></Slider>
-        <Toggle :title="makeSpikeyToggleName" :val="makeSpikeyToggleValue" @update="updateValue"></Toggle>
-      </div>
-  
-      <div id="viewer">
-        <GeometryView :data="inputs" :path="path"></GeometryView>
-      </div>
+<template>
+  <div id="container">
+    <div id="topbar">
+      <IntegerInput :title="radiusSliderName" :val="radiusSliderValue" @update="updateValue"></IntegerInput>
+      <IntegerInput :title="divisionsVertSliderName" :val="divisionsVertValue" @update="updateValue"></IntegerInput>
+      <SelectInput :title="horzDivisionWidthSliderName" :options="horzDivisionWidthOptions" :val="horzDivisionWidthSliderValue" @update="updateValue"></SelectInput>
     </div>
-  </template>
-  
-  <script setup>
-  import { ref, onBeforeMount, computed } from "vue"
-  import GeometryView from "../components/GeometryView.vue"
-  import Slider from '../components/Slider.vue'
-  import Toggle from "../components/Toggle.vue"
-  import IntegerInput from "../components/IntegerInput.vue"
-  
-  //define path to grasshopper script
-  import def from "../assets/disco.gh"
-  const path = def
-  
-  //define input names and values
-  const radiusSliderName = ref("radius")
-  const radiusSliderValue = ref(50)
-  
-  const divisionsVertSliderName = ref("divisionsVert")
-  const divisionsVertValue = ref(20)
-  
-  const horzDivisionWidthSliderName = ref("horzDivisionWidth")
-  const horzDivisionWidthValue = ref(4)
-  
-  const makeSpikeyToggleName = ref("makeSpikey")
-  const makeSpikeyToggleValue = ref(false)
-  
-  //define inputs
-  let inputs = ref({
-    [radiusSliderName.value]: radiusSliderValue.value ,
-    [divisionsVertSliderName.value] : divisionsVertValue.value ,
-    [horzDivisionWidthSliderName.value] : horzDivisionWidthValue.value,
-    [makeSpikeyToggleName.value] : makeSpikeyToggleValue.value
-  });
-  
-  function updateValue(newValue, parameterName) {
-    // Iterate over the inputs array
-    for (const [key, value] of Object.entries(inputs.value)) {
-      if (key == parameterName){
-          inputs.value[key] = newValue
-          console.log(parameterName + ':' + newValue)
-      }
-    }
+
+    <div id="viewer">
+      <GeometryView :data="inputs" :path="path"></GeometryView>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue"
+import GeometryView from "../components/GeometryView.vue"
+import Slider from '../components/Slider.vue'
+import Toggle from "../components/Toggle.vue"
+import IntegerInput from "../components/IntegerInput.vue"
+import SelectInput from "../components/SelectInput.vue" // Import the new component
+
+// Define path to grasshopper script
+import def from "../assets/disco.gh"
+const path = def
+
+// Define input names and values
+const radiusSliderName = ref("radius")
+const radiusSliderValue = ref(40)
+
+const divisionsVertSliderName = ref("divisionsVert")
+const divisionsVertValue = ref(30)
+
+
+const horzDivisionWidthSliderName = ref("horzDivisionWidth")
+const horzDivisionWidthSliderValue = ref(1) // Initial index value as integer
+
+// Define options for the select input
+const horzDivisionWidthOptions = ref([
+  { label: 'None', value: '1' },
+  { label: 'TC', value: '2' },
+  { label: 'TL', value: '3' },
+  { label: 'TR', value: '4' }
+])
+
+// Define inputs
+let inputs = ref({
+  [radiusSliderName.value]: radiusSliderValue.value,
+  [divisionsVertSliderName.value]: divisionsVertValue.value,
+  [horzDivisionWidthSliderName.value]: horzDivisionWidthSliderValue.value // Initial index value as integer
+});
+
+function updateValue(newValue, parameterName) {
+  // Update the specific parameter in inputs
+  inputs.value[parameterName] = newValue;
+  if (parameterName === horzDivisionWidthSliderName.value) {
+    horzDivisionWidthSliderValue.value = newValue; // Ensure horzDivisionWidthSliderValue is updated
   }
-  
-  </script>
-  
+  console.log(parameterName + ':' + newValue);
+}
+</script>
+
+
+
   
   
   

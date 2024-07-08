@@ -17,8 +17,10 @@ import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 import { runCompute } from "@/scripts/compute.js"
 import { loadRhino } from "@/scripts/compute.js";
 
-//import context from "../assets/moonless_golf_1k.hdr"
-import context from "../assets/lilienstein_4k.hdr"
+import texturePath from "../assets/graphics/brick_texture.jpg"
+
+//import context from "../assets/
+import context from "../assets/blinds_4k.hdr"
 
 const ghPath = '../assets/disco.gh'
 
@@ -58,8 +60,8 @@ function init() {
   container.appendChild(renderer.domElement)
 
   // Set up camera - https://threejs.org/docs/#api/en/cameras/PerspectiveCamera
-  camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
-	camera.position.set(500, -300, 0)
+  camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 5000 );
+	camera.position.set(800, 250, 200)
   camera.lookAt(0,0,0)
 
   // Create scene - https://threejs.org/docs/?q=scene#api/en/scenes/Scene
@@ -92,8 +94,8 @@ function init() {
 
   //Create Materials
   mirrorMaterial = new THREE.MeshStandardMaterial( {
-    roughness: 0,
-    metalness: 1,
+    roughness: 0.85,
+    metalness: 0.85,
     flatShading: false
   });
 
@@ -116,6 +118,7 @@ function init() {
   gui.add( renderer, 'toneMappingExposure', 0, 2 ).name( 'exposure' );
 
   //Rotate scene
+  controls.autoRotateSpeed = 0.2;
   controls.autoRotate = true;
 
   //Animate
@@ -181,7 +184,7 @@ function animate() {
 
 
 
-
+/*
   //Rotate Lights
   const time = Date.now() * speedFactor;
   spotLightRed.position.x = Math.sin( time * 0.7 ) * 100;
@@ -199,6 +202,7 @@ function animate() {
   spotLightOrange.position.x = Math.sin( time * 0.3 ) * 100;
   spotLightOrange.position.y = Math.cos( time * 0.7 ) * 100;
   spotLightOrange.position.z = Math.sin( time * 0.5 ) * 100;
+*/
 
   renderer.render(scene, camera);
 }

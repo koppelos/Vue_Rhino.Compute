@@ -28,3 +28,7 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# Ignore specific file
+src/assets/blinds_16k.hdr
+srt/assets/blinds_8k.hdr

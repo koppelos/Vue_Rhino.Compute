@@ -8,12 +8,17 @@
           <div :class="{ 'selected-tab': selectedExample === 0, 'navigation-tab': selectedExample !== 0 }" @click="toggleExample(0)">Example 1</div>
 <!--          /*<div :class="{ 'selected-tab': selectedExample === 1, 'navigation-tab': selectedExample !== 1 }" @click="toggleExample(1)">Example 2</div> -->
           <div :class="{ 'selected-tab': selectedExample === 1, 'navigation-tab': selectedExample !== 1 }" @click="toggleExample(2)">Price Calculator</div>
+          <div :class="{ 'selected-tab': selectedExample === 2, 'navigation-tab': selectedExample !== 2 }" @click="toggleExample(3)">Experiment</div>
+          <div :class="{ 'selected-tab': selectedExample === 3, 'navigation-tab': selectedExample !== 3 }" @click="toggleExample(4)">New Window Geometry</div>
         </div>
       </div>
       <DarkModeToggle @update="changeMode" :title="'darkMode'" id="toggle" ></DarkModeToggle>
     </div>
   </div>
 </template>
+
+
+
 
 <script setup>
 import { ref } from 'vue';
@@ -41,6 +46,19 @@ function changeMode(value, title){
   }  
 }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style scoped>
 #top-bar {

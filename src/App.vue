@@ -7,6 +7,7 @@ import Example2 from "./examples/example2_completed.vue"
 import Example3 from "./examples/example3.vue"
 import Example4 from "./examples/example4.vue"
 import Example5 from "./examples/example5.vue"
+import Example6 from "./examples/example6.vue"
 import Loading from "./components/Loading.vue"
 
 //Import and define Store
@@ -30,6 +31,7 @@ function toggleSelectedExample(exampleNum){
     <Example3 v-if="selectedExample==2"></Example3>
     <Example4 v-if="selectedExample==3"></Example4>
     <Example5 v-if="selectedExample==4"></Example5>
+    <Example6 v-if="selectedExample==5"></Example6>
   </div>
   <Loading class="loader-overlay" v-if="computeStore.computing"></Loading>
 </template>

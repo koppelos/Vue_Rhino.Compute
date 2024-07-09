@@ -17,10 +17,6 @@ import ButtonComponent from "../components/ButtonComponent.vue";
     
     
     
-    
-    
-    
-    
 <style scoped>
 #container {
   display: flex;
